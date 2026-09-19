@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unike • Aprovados & Removidos</title>
+<style>
+:root {
+  --bg:#f5f7fb; --card:#fff; --text:#151923; --muted:#7d8799; --line:#e8ebf1;
+  --green:#168563; --greenbg:#eaf8f2; --red:#c65360; --redbg:#fff0f2;
+  --blue:#4567d7; --bluebg:#eef2ff; --shadow:0 7px 24px rgba(32,42,68,.05);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:13px/1.45 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.layout{display:grid;grid-template-columns:205px minmax(0,1fr);min-height:100vh}
+aside{position:sticky;top:0;height:100vh;background:rgba(255,255,255,.94);border-right:1px solid var(--line);padding:23px 16px}
+.brand{font-size:17px;font-weight:800;letter-spacing:-.03em}
+.brand small{display:block;margin-top:3px;color:#9aa2b1;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.nav-label{margin:28px 9px 8px;font-size:9px;color:#a2a9b6;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+nav a{display:flex;align-items:center;justify-content:space-between;color:#596376;text-decoration:none;padding:9px 10px;margin:3px 0;border-radius:9px;font-weight:650}
+nav a:hover{background:#f0f3f8;color:#171b24}
+nav b{font-size:10px;background:#eef1f6;padding:2px 6px;border-radius:999px;color:#7a8496}
+main{width:100%;max-width:1500px;margin:0 auto;padding:27px 29px 38px}
+.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:17px}
+h1{margin:0;font-size:27px;line-height:1.1;letter-spacing:-.04em}
+.subtitle{margin-top:6px;color:var(--muted);font-size:12px}
+.base-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:#657084;font-size:10px;font-weight:700;white-space:nowrap}
+.summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:15px}
+.summary-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--shadow)}
+.summary-card span{display:block;color:var(--muted);font-size:10px;font-weight:700}
+.summary-card strong{display:block;font-size:23px;margin-top:4px;letter-spacing:-.04em}
+.summary-card small{color:#a1a9b7;font-size:9px}
+.green-text{color:var(--green)!important} .red-text{color:var(--red)!important}
+.group-section{scroll-margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0;box-shadow:var(--shadow)}
+.group-section:target{outline:2px solid #ced8fb;outline-offset:2px}
+.section-header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:13px}
+.eyebrow{font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:#a1a8b6;font-weight:800}
+h2{margin:2px 0 0;font-size:18px;letter-spacing:-.025em}
+.section-note{font-size:10px;color:#969ead;margin-top:2px}
+.section-kpis{display:flex;gap:23px}
+.section-kpis div{text-align:right;min-width:58px}
+.section-kpis span{display:block;color:#949dac;font-size:8px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
+.section-kpis strong{display:block;margin-top:2px;font-size:16px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;min-width:780px}
+th{background:#fafbfc;color:#8d96a6;text-align:left;font-size:8px;text-transform:uppercase;letter-spacing:.085em;padding:9px 11px;position:sticky;top:0}
+td{border-top:1px solid var(--line);padding:9px 11px;font-size:11px}
+tr:hover td{background:#fbfcfe}
+.num{text-align:right}
+.email-main{font-weight:650;color:#272d38}
+.email-sub{font-size:9px;color:#9aa3b1;margin-top:1px}
+.chip{display:inline-flex;min-width:31px;justify-content:center;padding:2px 7px;border-radius:999px;font-size:10px;font-weight:800}
+.chip.green{background:var(--greenbg);color:var(--green)}
+.chip.red{background:var(--redbg);color:var(--red)}
+.chip.blue{background:var(--bluebg);color:var(--blue)}
+.status{display:inline-flex;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:700;white-space:nowrap}
+.status.active{background:#eef8f4;color:#24785f}
+.status.inactive{background:#f3f4f7;color:#8790a0}
+.periodbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin-bottom:15px;box-shadow:var(--shadow)}
+.periodbar label{font-size:10px;color:var(--muted);font-weight:750}.periodbar select{border:1px solid var(--line);border-radius:9px;background:#fafbfc;padding:7px 10px;font:inherit;font-weight:700;color:var(--text)}
+.history{display:none;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0;box-shadow:var(--shadow)}
+.history-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.history-card{border:1px solid var(--line);border-radius:11px;padding:13px}.history-card span{display:block;color:var(--muted);font-size:9px;font-weight:700}.history-card strong{font-size:20px;display:block;margin-top:3px}
+footer{margin-top:20px;padding:16px 2px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#939cab;font-size:9px}
+footer strong{color:#626d7f}
+@media(max-width:1050px){.summary{grid-template-columns:repeat(3,1fr)}.section-kpis{gap:12px}}
+@media(max-width:850px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:13px 16px}.nav-label{display:none}nav{display:flex;gap:5px;overflow:auto;margin-top:9px}nav a{background:#f5f7fa;white-space:nowrap}main{padding:18px}}
+@media(max-width:620px){.periodbar{align-items:flex-start;flex-direction:column}.history-grid{grid-template-columns:repeat(2,1fr)}.top,.section-header,footer{flex-direction:column}.summary{grid-template-columns:repeat(2,1fr)}.section-kpis{width:100%;justify-content:space-between;flex-wrap:wrap}.section-kpis div{text-align:left}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">Unike Dashboard<small>Controle de criadores</small></div>
+    <div class="nav-label">Navegação</div>
+    <nav>
+      <a href="#resumo">Mês atual <b>SET</b></a>
+      <a href="#historico">Histórico <b>0</b></a>
+      <a href="#bgroup">B.Group <b>19</b></a>
+      <a href="#pdn">PDN <b>9</b></a>
+      <a href="#str">STR <b>37</b></a>
+    </nav>
+  </aside>
+  <main id="resumo">
+    <div class="top">
+      <div>
+        <h1>Aprovados & Removidos</h1>
+        <div class="subtitle">Todos os responsáveis acompanhados • base consolidada até 17/09/2026</div>
+      </div>
+      <div class="base-pill">Base atual • 17/09/2026</div>
+    </div>
+
+    <div class="periodbar">
+      <div><label for="periodo">Período consultado</label></div>
+      <select id="periodo" aria-label="Selecionar período"><option value="atual">Setembro 2026 • mês atual</option><option value="historico">Meses anteriores • histórico</option></select>
+    </div>
+
+    <section id="historico" class="history">
+      <div class="eyebrow">Histórico mensal</div><h2>Meses fechados</h2>
+      <div class="section-note">Quando setembro fechar, ele será preservado aqui e outubro começará zerado. Meses fechados mostram somente entradas, saídas e saldo.</div>
+      <div class="history-grid">
+        <div class="history-card"><span>B.Group</span><strong>—</strong><small>Nenhum mês fechado ainda</small></div>
+        <div class="history-card"><span>PDN</span><strong>—</strong><small>Nenhum mês fechado ainda</small></div>
+        <div class="history-card"><span>STR</span><strong>—</strong><small>Nenhum mês fechado ainda</small></div>
+        <div class="history-card"><span>Total geral</span><strong>—</strong><small>Nenhum mês fechado ainda</small></div>
+      </div>
+    </section>
+
+    <div class="summary">
+      <div class="summary-card"><span>Aprovados no mês</span><strong class="green-text">522</strong><small>movimentações registradas</small></div>
+      <div class="summary-card"><span>Removidos no mês</span><strong class="red-text">250</strong><small>movimentações registradas</small></div>
+      <div class="summary-card"><span>Saldo do mês</span><strong>272</strong><small>aprovados − removidos</small></div>
+      <div class="summary-card"><span>Criadores atuais</span><strong>1129</strong><small>vinculados agora</small></div>
+      <div class="summary-card"><span>E-mails acompanhados</span><strong>65</strong><small>B.Group + PDN + STR</small></div>
+    </div>
+
+    
+    <section id="bgroup" class="group-section">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Categoria</div>
+          <h2>B.Group</h2>
+          <div class="section-note">19 e-mails acompanhados</div>
+        </div>
+        <div class="section-kpis">
+          <div><span>Aprovados</span><strong class="green-text">125</strong></div>
+          <div><span>Removidos</span><strong class="red-text">58</strong></div>
+          <div><span>Saldo</span><strong>67</strong></div>
+          <div><span>Criadores atuais</span><strong>224</strong></div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Responsável / e-mail</th>
+              <th class="num">Aprovados</th>
+              <th class="num">Removidos</th>
+              <th class="num">Saldo do mês</th>
+              <th class="num">Criadores atuais</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td>
+            <div class="email-main">begroup@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">31</span></td>
+          <td class="num"><span class="chip red">15</span></td>
+          <td class="num"><span class="chip blue">16</span></td>
+          <td class="num"><strong>87</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.mirelevanda@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">14</span></td>
+          <td class="num"><span class="chip red">6</span></td>
+          <td class="num"><span class="chip blue">8</span></td>
+          <td class="num"><strong>37</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.brunomariele@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">12</span></td>
+          <td class="num"><span class="chip red">8</span></td>
+          <td class="num"><span class="chip blue">4</span></td>
+          <td class="num"><strong>19</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.kauaborba@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">27</span></td>
+          <td class="num"><span class="chip red">16</span></td>
+          <td class="num"><span class="chip blue">11</span></td>
+          <td class="num"><strong>16</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.marimuller@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">11</span></td>
+          <td class="num"><span class="chip red">3</span></td>
+          <td class="num"><span class="chip blue">8</span></td>
+          <td class="num"><strong>11</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.alcionenascimento@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>8</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.hortenciaholanda@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">8</span></td>
+          <td class="num"><span class="chip red">3</span></td>
+          <td class="num"><span class="chip blue">5</span></td>
+          <td class="num"><strong>8</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.carolinatricanico@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>7</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.danilocortez@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">6</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">6</span></td>
+          <td class="num"><strong>6</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.sisagency@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">6</span></td>
+          <td class="num"><span class="chip red">4</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>6</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.vitoriacristina@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>6</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.rayanivitoria@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>3</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.chrisalmeida@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.gabrielisouza@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.giovannarocha@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.laracalazans@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.leticiadomingues@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">be.vanessarosa@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">begrouprecrutamento@unikemkt.com.br</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section id="pdn" class="group-section">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Categoria</div>
+          <h2>PDN</h2>
+          <div class="section-note">9 e-mails acompanhados</div>
+        </div>
+        <div class="section-kpis">
+          <div><span>Aprovados</span><strong class="green-text">53</strong></div>
+          <div><span>Removidos</span><strong class="red-text">24</strong></div>
+          <div><span>Saldo</span><strong>29</strong></div>
+          <div><span>Criadores atuais</span><strong>181</strong></div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Responsável / e-mail</th>
+              <th class="num">Aprovados</th>
+              <th class="num">Removidos</th>
+              <th class="num">Saldo do mês</th>
+              <th class="num">Criadores atuais</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td>
+            <div class="email-main">pdn.allan@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">19</span></td>
+          <td class="num"><span class="chip red">9</span></td>
+          <td class="num"><span class="chip blue">10</span></td>
+          <td class="num"><strong>112</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.tainara@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">5</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">4</span></td>
+          <td class="num"><strong>22</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.eliel@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">2</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>11</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.lindebergue@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>9</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.carol@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">4</span></td>
+          <td class="num"><span class="chip red">4</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>8</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.felipe@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">8</span></td>
+          <td class="num"><span class="chip red">4</span></td>
+          <td class="num"><span class="chip blue">4</span></td>
+          <td class="num"><strong>8</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.mateus@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>6</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.alice@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">4</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>3</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">pdn.ferraz@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">5</span></td>
+          <td class="num"><span class="chip red">3</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    <section id="str" class="group-section">
+      <div class="section-header">
+        <div>
+          <div class="eyebrow">Categoria</div>
+          <h2>STR</h2>
+          <div class="section-note">37 e-mails acompanhados</div>
+        </div>
+        <div class="section-kpis">
+          <div><span>Aprovados</span><strong class="green-text">344</strong></div>
+          <div><span>Removidos</span><strong class="red-text">168</strong></div>
+          <div><span>Saldo</span><strong>176</strong></div>
+          <div><span>Criadores atuais</span><strong>724</strong></div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Responsável / e-mail</th>
+              <th class="num">Aprovados</th>
+              <th class="num">Removidos</th>
+              <th class="num">Saldo do mês</th>
+              <th class="num">Criadores atuais</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td>
+            <div class="email-main">str.raphael@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">73</span></td>
+          <td class="num"><span class="chip red">62</span></td>
+          <td class="num"><span class="chip blue">11</span></td>
+          <td class="num"><strong>118</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.adrianacampos@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">28</span></td>
+          <td class="num"><span class="chip red">16</span></td>
+          <td class="num"><span class="chip blue">12</span></td>
+          <td class="num"><strong>70</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.vanessanogueira@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">20</span></td>
+          <td class="num"><span class="chip red">15</span></td>
+          <td class="num"><span class="chip blue">5</span></td>
+          <td class="num"><strong>69</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.alessandrabueno@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">16</span></td>
+          <td class="num"><span class="chip red">6</span></td>
+          <td class="num"><span class="chip blue">10</span></td>
+          <td class="num"><strong>64</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.vivianejuciara@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">11</span></td>
+          <td class="num"><span class="chip red">4</span></td>
+          <td class="num"><span class="chip blue">7</span></td>
+          <td class="num"><strong>53</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.ivonemolina@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">37</span></td>
+          <td class="num"><span class="chip red">15</span></td>
+          <td class="num"><span class="chip blue">22</span></td>
+          <td class="num"><strong>40</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.soniamolina@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">21</span></td>
+          <td class="num"><span class="chip red">8</span></td>
+          <td class="num"><span class="chip blue">13</span></td>
+          <td class="num"><strong>33</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.thiagotartalho@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">21</span></td>
+          <td class="num"><span class="chip red">8</span></td>
+          <td class="num"><span class="chip blue">13</span></td>
+          <td class="num"><strong>28</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.rodrigogulao@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">13</span></td>
+          <td class="num"><span class="chip red">5</span></td>
+          <td class="num"><span class="chip blue">8</span></td>
+          <td class="num"><strong>26</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.lorenzoantunes@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">4</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>23</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.nellytroiano@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">11</span></td>
+          <td class="num"><span class="chip red">4</span></td>
+          <td class="num"><span class="chip blue">7</span></td>
+          <td class="num"><strong>21</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.andreiaferraz@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>19</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.tabatacatarin@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">7</span></td>
+          <td class="num"><span class="chip red">6</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>17</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.felipecastro@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">20</span></td>
+          <td class="num"><span class="chip red">7</span></td>
+          <td class="num"><span class="chip blue">13</span></td>
+          <td class="num"><strong>14</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.gustavogimenez@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>14</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.carolineamaral@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">8</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">7</span></td>
+          <td class="num"><strong>13</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.andrezadias@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">12</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">12</span></td>
+          <td class="num"><strong>12</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.giovannaedmond@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>11</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">Vera Lúcia</div>
+            <div class='email-sub'>veraluciadacosta@unikemkt.com.br</div>
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>11</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.neurianpaiva@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>10</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.natalinarocha@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">6</span></td>
+          <td class="num"><span class="chip red">2</span></td>
+          <td class="num"><span class="chip blue">4</span></td>
+          <td class="num"><strong>9</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.endycarneiro@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>8</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.luizcarlos@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>6</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.antonioneto@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>5</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.tatyana@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">5</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">5</span></td>
+          <td class="num"><strong>5</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.alexkaren@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">2</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>4</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.irisandrade@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>4</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.brendongoncalves@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>3</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.carolinefernandes@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">1</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>3</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.gracielasantos@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>3</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.gabriellacristina@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.liasilva@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">2</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">2</span></td>
+          <td class="num"><strong>2</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.michaelhideyk@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">3</span></td>
+          <td class="num"><span class="chip red">2</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.simoneviana@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">1</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.vivianefeitoza@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">0</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">0</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.winniegabriely@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">4</span></td>
+          <td class="num"><span class="chip red">1</span></td>
+          <td class="num"><span class="chip blue">3</span></td>
+          <td class="num"><strong>1</strong></td>
+          <td><span class="status active">Ativo</span></td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="email-main">str.isabellepereira@unikemkt.com</div>
+            
+          </td>
+          <td class="num"><span class="chip green">1</span></td>
+          <td class="num"><span class="chip red">0</span></td>
+          <td class="num"><span class="chip blue">1</span></td>
+          <td class="num"><strong>0</strong></td>
+          <td><span class="status inactive">Sem criadores atuais</span></td>
+        </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div>Unike • Controle operacional de responsáveis</div>
+      <div><strong>Última atualização:</strong> 19/09/2026 às 01:06 (Brasília)</div>
+    </footer>
+  </main>
+</div>
+<script>
+const periodo=document.getElementById('periodo');const hist=document.getElementById('historico');const groups=[...document.querySelectorAll('.group-section')];const summary=document.querySelector('.summary');periodo.addEventListener('change',()=>{const h=periodo.value==='historico';hist.style.display=h?'block':'none';summary.style.display=h?'none':'grid';groups.forEach(x=>x.style.display=h?'none':'block');if(h)location.hash='historico';else location.hash='resumo';});
+</script>
+</body>
+</html>
