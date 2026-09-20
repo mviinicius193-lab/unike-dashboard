@@ -3,48 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Unike • Aprovados & Removidos</title>
+<meta name="theme-color" content="#36005d">
+<meta name="description" content="Relatório Unike de performance e gestão de criadores.">
+<meta property="og:title" content="Unike | Relatório de Criadores">
+<meta property="og:description" content="Visão consolidada da operação de criadores da Unike Marketing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://mviinicius193-lab.github.io/unike-dashboard/assets/unike-logo.jpeg">
+<link rel="icon" href="assets/unike-logo.jpeg">
+<title>Unike | Relatório de Criadores</title>
 <style>
 :root {
-  --bg:#f5f7fb; --card:#fff; --text:#151923; --muted:#7d8799; --line:#e8ebf1;
-  --green:#168563; --greenbg:#eaf8f2; --red:#c65360; --redbg:#fff0f2;
-  --blue:#4567d7; --bluebg:#eef2ff; --shadow:0 7px 24px rgba(32,42,68,.05);
+  --bg:#f7f7fa; --card:#fff; --text:#18151f; --muted:#777181; --line:#e9e5ee;
+  --brand:#6f2cff; --brand-dark:#36005d; --brand-soft:#f2ecff; --brand-mid:#a985ff;
+  --green:#087c60; --greenbg:#e9f8f3; --red:#c34864; --redbg:#fff0f4;
+  --blue:#6f2cff; --bluebg:#f1ebff; --shadow:0 10px 30px rgba(54,0,93,.055);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font:13px/1.45 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.layout{display:grid;grid-template-columns:205px minmax(0,1fr);min-height:100vh}
-aside{position:sticky;top:0;height:100vh;background:rgba(255,255,255,.94);border-right:1px solid var(--line);padding:23px 16px}
-.brand{font-size:17px;font-weight:800;letter-spacing:-.03em}
-.brand small{display:block;margin-top:3px;color:#9aa2b1;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+aside{position:sticky;top:0;height:100vh;background:rgba(255,255,255,.96);border-right:1px solid var(--line);padding:18px 16px;z-index:10}
+.brand{height:116px;overflow:hidden;border-bottom:1px solid var(--line);margin:0 2px 18px;position:relative}
+.brand img{display:block;width:176px;height:176px;object-fit:cover;transform:translate(-3px,-29px)}
+.brand small{position:absolute;left:9px;bottom:9px;color:#8e8798;font-size:8px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+@media(min-width:851px){.brand small{display:none}}
 .nav-label{margin:28px 9px 8px;font-size:9px;color:#a2a9b6;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
-nav a{display:flex;align-items:center;justify-content:space-between;color:#596376;text-decoration:none;padding:9px 10px;margin:3px 0;border-radius:9px;font-weight:650}
-nav a:hover{background:#f0f3f8;color:#171b24}
-nav b{font-size:10px;background:#eef1f6;padding:2px 6px;border-radius:999px;color:#7a8496}
+nav a{display:flex;align-items:center;justify-content:space-between;color:#635d6c;text-decoration:none;padding:10px 11px;margin:4px 0;border-radius:7px;font-weight:700;border-left:3px solid transparent}
+nav a:hover,nav a:focus{background:var(--brand-soft);color:var(--brand-dark);border-left-color:var(--brand)}
+nav b{font-size:10px;background:#f0edf3;padding:2px 6px;border-radius:999px;color:#7c7485}
+.agency-card{position:absolute;left:16px;right:16px;bottom:20px;padding:13px;border:1px solid var(--line);border-radius:8px;background:#faf9fb}
+.agency-card strong{display:block;color:var(--brand-dark);font-size:11px}.agency-card span{display:block;margin-top:3px;color:var(--muted);font-size:9px}
 main{width:100%;max-width:1500px;margin:0 auto;padding:27px 29px 38px}
 .top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:17px}
-h1{margin:0;font-size:27px;line-height:1.1;letter-spacing:-.04em}
+h1{margin:0;font-size:29px;line-height:1.1;letter-spacing:-.03em}
+.report-kicker{display:flex;align-items:center;gap:7px;margin-bottom:7px;color:var(--brand);font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.report-kicker::before{content:"";width:19px;height:3px;background:var(--brand);border-radius:999px}
 .subtitle{margin-top:6px;color:var(--muted);font-size:12px}
-.base-pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:#657084;font-size:10px;font-weight:700;white-space:nowrap}
+.base-pill{background:var(--brand-dark);border:1px solid var(--brand-dark);border-radius:7px;padding:8px 11px;color:#fff;font-size:10px;font-weight:750;white-space:nowrap}
 .summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:15px}
-.summary-card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 15px;box-shadow:var(--shadow)}
+.summary-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--brand-mid);border-radius:8px;padding:14px 15px;box-shadow:var(--shadow)}
 .summary-card span{display:block;color:var(--muted);font-size:10px;font-weight:700}
 .summary-card strong{display:block;font-size:23px;margin-top:4px;letter-spacing:-.04em}
 .summary-card small{color:#a1a9b7;font-size:9px}
 .green-text{color:var(--green)!important} .red-text{color:var(--red)!important}
-.group-section{scroll-margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0;box-shadow:var(--shadow)}
-.group-section:target{outline:2px solid #ced8fb;outline-offset:2px}
+.group-section{scroll-margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:17px;margin:13px 0;box-shadow:var(--shadow)}
+.group-section:target{outline:2px solid var(--brand-mid);outline-offset:2px}
 .section-header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:13px}
 .eyebrow{font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:#a1a8b6;font-weight:800}
-h2{margin:2px 0 0;font-size:18px;letter-spacing:-.025em}
+h2{margin:2px 0 0;font-size:19px;letter-spacing:-.015em;color:var(--brand-dark)}
 .section-note{font-size:10px;color:#969ead;margin-top:2px}
+.data-source{display:flex;align-items:center;gap:6px;margin:-4px 0 13px;color:#857d8d;font-size:9px}
+.data-source::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
 .section-kpis{display:flex;gap:23px}
 .section-kpis div{text-align:right;min-width:58px}
 .section-kpis span{display:block;color:#949dac;font-size:8px;text-transform:uppercase;letter-spacing:.07em;font-weight:800}
 .section-kpis strong{display:block;margin-top:2px;font-size:16px}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:7px}
 table{width:100%;border-collapse:collapse;min-width:780px}
-th{background:#fafbfc;color:#8d96a6;text-align:left;font-size:8px;text-transform:uppercase;letter-spacing:.085em;padding:9px 11px;position:sticky;top:0}
+th{background:#faf8fc;color:#807789;text-align:left;font-size:8px;text-transform:uppercase;letter-spacing:.085em;padding:9px 11px;position:sticky;top:0}
 td{border-top:1px solid var(--line);padding:9px 11px;font-size:11px}
 tr:hover td{background:#fbfcfe}
 .num{text-align:right}
@@ -57,35 +73,48 @@ tr:hover td{background:#fbfcfe}
 .status{display:inline-flex;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:700;white-space:nowrap}
 .status.active{background:#eef8f4;color:#24785f}
 .status.inactive{background:#f3f4f7;color:#8790a0}
-.periodbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin-bottom:15px;box-shadow:var(--shadow)}
+.periodbar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:15px;box-shadow:var(--shadow)}
 .periodbar label{font-size:10px;color:var(--muted);font-weight:750}.periodbar select{border:1px solid var(--line);border-radius:9px;background:#fafbfc;padding:7px 10px;font:inherit;font-weight:700;color:var(--text)}
 .history{display:none;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px;margin:13px 0;box-shadow:var(--shadow)}
 .history-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.history-card{border:1px solid var(--line);border-radius:11px;padding:13px}.history-card span{display:block;color:var(--muted);font-size:9px;font-weight:700}.history-card strong{font-size:20px;display:block;margin-top:3px}
-footer{margin-top:20px;padding:16px 2px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#939cab;font-size:9px}
+footer{margin-top:20px;padding:16px 2px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:#938b9d;font-size:9px}
 footer strong{color:#626d7f}
 @media(max-width:1050px){.summary{grid-template-columns:repeat(3,1fr)}.section-kpis{gap:12px}}
-@media(max-width:850px){.layout{grid-template-columns:1fr}aside{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:13px 16px}.nav-label{display:none}nav{display:flex;gap:5px;overflow:auto;margin-top:9px}nav a{background:#f5f7fa;white-space:nowrap}main{padding:18px}}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  aside{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px 16px}
+  .brand{height:54px;width:190px;margin:0;border:0}
+  .brand img{width:108px;height:108px;transform:translate(-13px,-29px)}
+  .brand small{left:74px;bottom:20px;width:112px;font-size:7px;line-height:1.35}
+  .nav-label,.agency-card{display:none}
+  nav{display:flex;gap:5px;overflow:auto;margin-top:7px}
+  nav a{background:#f7f4fa;white-space:nowrap}
+  main{padding:18px}
+}
 @media(max-width:620px){
   body{background:#f2f4f8;font-size:12px}
   .layout{display:block}
-  aside{position:sticky;top:0;z-index:20;height:auto;padding:max(10px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));background:rgba(255,255,255,.97);border-bottom:1px solid #dfe3ea;box-shadow:0 4px 16px rgba(29,39,58,.06);backdrop-filter:blur(12px)}
-  .brand{display:flex;align-items:center;justify-content:space-between;font-size:15px;letter-spacing:0}
-  .brand small{display:inline;margin:0;font-size:8px;letter-spacing:.08em}
+  aside{position:sticky;top:0;z-index:20;height:auto;padding:max(8px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));background:rgba(255,255,255,.97);border-bottom:1px solid #ded9e5;box-shadow:0 4px 16px rgba(54,0,93,.07);backdrop-filter:blur(12px)}
+  .brand{height:43px;margin:0;border:0;overflow:hidden}
+  .brand img{width:88px;height:88px;transform:translate(-12px,-23px)}
+  .brand small{left:auto;right:0;bottom:15px;font-size:7px}
+  .agency-card{display:none}
   nav{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;overflow:visible;margin:9px 0 0}
-  nav a{min-height:40px;margin:0;padding:9px 8px;border-radius:8px 8px 0 0;background:transparent;justify-content:center;gap:6px;color:#657084;font-size:11px}
-  nav a:hover,nav a:focus{background:#f3f5f9;color:#171b24}
+  nav a{min-height:40px;margin:0;padding:9px 8px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;justify-content:center;gap:6px;color:#6f6878;font-size:11px}
+  nav a:hover,nav a:focus{background:var(--brand-soft);color:var(--brand-dark);border-bottom-color:var(--brand)}
   nav a[href="#resumo"],nav a[href="#historico"]{display:none}
   nav b{padding:1px 5px;font-size:8px}
   main{padding:16px max(14px,env(safe-area-inset-right)) max(32px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));overflow:hidden}
   .top{display:block;margin-bottom:12px}
-  h1{font-size:22px;letter-spacing:0}
+  h1{font-size:22px;letter-spacing:0;color:var(--brand-dark)}
+  .report-kicker{font-size:7px;margin-bottom:6px}
   .subtitle{font-size:10px;line-height:1.5}
   .base-pill{display:inline-block;margin-top:9px;padding:5px 8px;border-radius:8px;font-size:9px}
   .periodbar{display:block;margin-bottom:12px;padding:10px;border-radius:8px}
   .periodbar label{display:block;margin-bottom:6px;font-size:9px}
   .periodbar select{width:100%;min-height:42px;border-radius:7px;font-size:11px}
   .summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:20px}
-  .summary-card{min-height:91px;padding:12px;border-radius:8px;box-shadow:0 3px 12px rgba(32,42,68,.04)}
+  .summary-card{min-height:91px;padding:12px;border-radius:8px;box-shadow:0 3px 12px rgba(54,0,93,.045)}
   .summary-card:nth-child(5){grid-column:1/-1;min-height:76px}
   .summary-card span{font-size:9px;line-height:1.3}
   .summary-card strong{font-size:22px;letter-spacing:0}
@@ -104,25 +133,27 @@ footer strong{color:#626d7f}
   table,tbody{display:block;width:100%;min-width:0}
   thead{display:none}
   tbody{display:grid;gap:8px}
-  tr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:"email email email status" "approved removed balance current";gap:10px 6px;padding:12px;background:#fff;border:1px solid #e1e5eb;border-radius:8px;box-shadow:0 2px 9px rgba(32,42,68,.035)}
+  tr{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-areas:"email email email email status" "sent approved removed balance current";gap:10px 6px;padding:12px;background:#fff;border:1px solid #e1e5eb;border-radius:8px;box-shadow:0 2px 9px rgba(32,42,68,.035)}
   tr:hover td{background:transparent}
   td{display:block;min-width:0;padding:0;border:0;font-size:10px}
   td:nth-child(1){grid-area:email;padding-right:2px}
-  td:nth-child(2){grid-area:approved}
-  td:nth-child(3){grid-area:removed}
-  td:nth-child(4){grid-area:balance}
-  td:nth-child(5){grid-area:current}
-  td:nth-child(6){grid-area:status;align-self:start;text-align:right}
-  td:nth-child(n+2):nth-child(-n+5)::before{display:block;margin-bottom:3px;color:#8b94a4;font-size:7px;font-weight:800;text-transform:uppercase;line-height:1.2}
-  td:nth-child(2)::before{content:"Aprovados"}
-  td:nth-child(3)::before{content:"Removidos"}
-  td:nth-child(4)::before{content:"Saldo"}
-  td:nth-child(5)::before{content:"Atuais"}
+  td:nth-child(2){grid-area:sent}
+  td:nth-child(3){grid-area:approved}
+  td:nth-child(4){grid-area:removed}
+  td:nth-child(5){grid-area:balance}
+  td:nth-child(6){grid-area:current}
+  td:nth-child(7){grid-area:status;align-self:start;text-align:right}
+  td:nth-child(n+2):nth-child(-n+6)::before{display:block;margin-bottom:3px;color:#8b94a4;font-size:7px;font-weight:800;text-transform:uppercase;line-height:1.2}
+  td:nth-child(2)::before{content:"Enviados"}
+  td:nth-child(3)::before{content:"Aprovados"}
+  td:nth-child(4)::before{content:"Removidos"}
+  td:nth-child(5)::before{content:"Saldo"}
+  td:nth-child(6)::before{content:"Atuais"}
   .num{text-align:left}
   .email-main{overflow-wrap:anywhere;font-size:11px;line-height:1.35}
   .email-sub{font-size:8px}
   .chip{min-width:0;padding:0;background:transparent!important;border-radius:0;font-size:16px;line-height:1.2}
-  td:nth-child(5) strong{font-size:16px;line-height:1.2}
+  td:nth-child(6) strong{font-size:16px;line-height:1.2}
   .status{padding:3px 6px;font-size:8px}
   .history{padding:14px;border-radius:8px}
   .history-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -135,7 +166,10 @@ footer strong{color:#626d7f}
 <body>
 <div class="layout">
   <aside>
-    <div class="brand">Unike Dashboard<small>Controle de criadores</small></div>
+    <div class="brand">
+      <img src="assets/unike-logo.jpeg" alt="Unike">
+      <small>Inteligência de criadores</small>
+    </div>
     <div class="nav-label">Navegação</div>
     <nav>
       <a href="#resumo">Mês atual <b>SET</b></a>
@@ -144,12 +178,17 @@ footer strong{color:#626d7f}
       <a href="#pdn">PDN <b>9</b></a>
       <a href="#str">STR <b>37</b></a>
     </nav>
+    <div class="agency-card">
+      <strong>Unike Marketing</strong>
+      <span>Gestão e performance de criadores</span>
+    </div>
   </aside>
   <main id="resumo">
     <div class="top">
       <div>
+        <div class="report-kicker">Relatório de performance</div>
         <h1>Aprovados & Removidos</h1>
-        <div class="subtitle">Todos os responsáveis acompanhados • base consolidada até 17/09/2026</div>
+        <div class="subtitle">Visão consolidada da operação de criadores • base até 17/09/2026</div>
       </div>
       <div class="base-pill">Base atual • 17/09/2026</div>
     </div>
@@ -158,6 +197,7 @@ footer strong{color:#626d7f}
       <div><label for="periodo">Período consultado</label></div>
       <select id="periodo" aria-label="Selecionar período"><option value="atual">Setembro 2026 • mês atual</option><option value="historico">Meses anteriores • histórico</option></select>
     </div>
+    <div class="data-source">Enviados consultados no CRM Unike em 20/09/2026 • traço indica perfil ainda não vinculado com segurança</div>
 
     <section id="historico" class="history">
       <div class="eyebrow">Histórico mensal</div><h2>Meses fechados</h2>
@@ -1056,13 +1096,67 @@ footer strong{color:#626d7f}
     </section>
 
     <footer>
-      <div>Unike • Controle operacional de responsáveis</div>
+      <div><strong>Unike Marketing</strong> • Inteligência de criadores</div>
       <div><strong>Última atualização:</strong> 19/09/2026 às 01:06 (Brasília)</div>
     </footer>
   </main>
 </div>
 <script>
 const periodo=document.getElementById('periodo');const hist=document.getElementById('historico');const groups=[...document.querySelectorAll('.group-section')];const summary=document.querySelector('.summary');periodo.addEventListener('change',()=>{const h=periodo.value==='historico';hist.style.display=h?'block':'none';summary.style.display=h?'none':'grid';groups.forEach(x=>x.style.display=h?'none':'block');if(h)location.hash='historico';else location.hash='resumo';});
+
+const sentByEmail={
+  'be.mirelevanda@unikemkt.com':0,
+  'be.brunomariele@unikemkt.com':0,
+  'be.kauaborba@unikemkt.com':0,
+  'be.marimuller@unikemkt.com':0,
+  'be.alcionenascimento@unikemkt.com':0,
+  'be.hortenciaholanda@unikemkt.com':0,
+  'be.carolinatricanico@unikemkt.com':7,
+  'be.danilocortez@unikemkt.com':0,
+  'be.vitoriacristina@unikemkt.com':0,
+  'be.rayanivitoria@unikemkt.com':0,
+  'be.chrisalmeida@unikemkt.com':0,
+  'be.giovannarocha@unikemkt.com':0,
+  'be.laracalazans@unikemkt.com':1,
+  'pdn.tainara@unikemkt.com':2,
+  'pdn.lindebergue@unikemkt.com':6,
+  'pdn.alice@unikemkt.com':10,
+  'str.adrianacampos@unikemkt.com':0,
+  'str.alessandrabueno@unikemkt.com':0,
+  'str.soniamolina@unikemkt.com':0,
+  'str.lorenzoantunes@unikemkt.com':0,
+  'str.andreiaferraz@unikemkt.com':7,
+  'str.felipecastro@unikemkt.com':0,
+  'str.andrezadias@unikemkt.com':0,
+  'str.luizcarlos@unikemkt.com':0,
+  'str.brendongoncalves@unikemkt.com':0,
+  'str.carolinefernandes@unikemkt.com':0,
+  'str.gabriellacristina@unikemkt.com':0,
+  'str.liasilva@unikemkt.com':0,
+  'str.michaelhideyk@unikemkt.com':0,
+  'str.vivianefeitoza@unikemkt.com':9,
+  'str.winniegabriely@unikemkt.com':0,
+  'str.isabellepereira@unikemkt.com':1
+};
+
+document.querySelectorAll('.group-section table').forEach(table=>{
+  const header=document.createElement('th');
+  header.className='num';
+  header.textContent='Enviados';
+  table.querySelector('thead tr').children[0].after(header);
+  table.querySelectorAll('tbody tr').forEach(row=>{
+    const email=row.querySelector('.email-main')?.textContent.trim().toLowerCase();
+    const value=email && Object.prototype.hasOwnProperty.call(sentByEmail,email)?sentByEmail[email]:null;
+    const cell=document.createElement('td');
+    cell.className='num';
+    const chip=document.createElement('span');
+    chip.className='chip blue';
+    chip.textContent=value===null?'—':String(value);
+    if(value===null) chip.title='Perfil sem vínculo confirmado no CRM Unike';
+    cell.append(chip);
+    row.children[0].after(cell);
+  });
+});
 </script>
 </body>
 </html>
